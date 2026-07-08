@@ -1,6 +1,6 @@
 export default function MarketingPage() {
   return (
-    <main className="min-h-screen bg-black text-white px-8 py-32">
+    <main className="min-h-screen pt-20 bg-black text-white px-8 py-32">
 
       <h1 className="text-6xl font-bold mb-6">
         Marketing System

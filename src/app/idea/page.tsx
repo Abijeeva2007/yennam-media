@@ -47,7 +47,7 @@ export default function IdeaPage() {
   };
 
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-20">
+    <main className="min-h-screen pt-20 bg-black text-white px-6 py-20">
       <div className="max-w-3xl mx-auto">
 
         <h1 className="text-6xl font-bold mb-4">

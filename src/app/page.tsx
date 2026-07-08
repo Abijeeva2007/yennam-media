@@ -9,7 +9,7 @@ export default function Home() {
       <main className="bg-black text-white">
 
         {/* HERO SECTION */}
-        <section className="relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden px-6">
+        <section className="relative min-h-screen pt-20 flex flex-col justify-center items-center text-center overflow-hidden px-6">
 
           <div className="absolute w-[900px] h-[900px] bg-white/5 rounded-full blur-[220px]" />
 
