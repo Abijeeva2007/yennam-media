@@ -33,7 +33,9 @@ export default function IdeaPage() {
       return;
     }
 
-    setSuccess("Idea submitted successfully!");
+    setSuccess(
+      "✅ Thank you! Your idea has been submitted successfully. We'll review it and get back to you soon."
+    );
 
     setForm({
       name: "",
@@ -47,105 +49,164 @@ export default function IdeaPage() {
   };
 
   return (
-    <main className="min-h-screen pt-20 bg-black text-white px-6 py-20">
-      <div className="max-w-3xl mx-auto">
+    <main className="min-h-screen bg-black text-white px-6 py-20 pt-24">
+      <div className="mx-auto max-w-3xl">
 
-        <h1 className="text-6xl font-bold mb-4">
+        <h1 className="mb-4 text-4xl md:text-6xl font-bold">
           Submit Your Startup Idea
         </h1>
 
-        <p className="text-gray-400 mb-12">
-          Tell us about your idea and let's build it together.
+        <p className="mb-12 text-lg text-gray-400">
+          Have an idea? Share it with us and let's explore how we can build it together.
         </p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-6"
-        >
-          <input
-            className="w-full p-4 bg-zinc-900 rounded-xl"
-            placeholder="Your Name"
-            value={form.name}
-            onChange={(e) =>
-              setForm({ ...form, name: e.target.value })
-            }
-          />
+        <form onSubmit={handleSubmit} className="space-y-8">
 
-          <input
-            className="w-full p-4 bg-zinc-900 rounded-xl"
-            placeholder="Email"
-            value={form.email}
-            onChange={(e) =>
-              setForm({ ...form, email: e.target.value })
-            }
-          />
+          {/* Name */}
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-300">
+              Your Name
+            </label>
 
-          <input
-            className="w-full p-4 bg-zinc-900 rounded-xl"
-            placeholder="Company"
-            value={form.company}
-            onChange={(e) =>
-              setForm({ ...form, company: e.target.value })
-            }
-          />
+            <input
+              type="text"
+              required
+              placeholder="John Doe"
+              value={form.name}
+              onChange={(e) =>
+                setForm({ ...form, name: e.target.value })
+              }
+              className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
+            />
+          </div>
 
-          <input
-            className="w-full p-4 bg-zinc-900 rounded-xl"
-            placeholder="Idea Title"
-            value={form.idea_title}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                idea_title: e.target.value,
-              })
-            }
-          />
+          {/* Email */}
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-300">
+              Email Address
+            </label>
 
-          <textarea
-            rows={6}
-            className="w-full p-4 bg-zinc-900 rounded-xl"
-            placeholder="Describe your idea"
-            value={form.idea_description}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                idea_description: e.target.value,
-              })
-            }
-          />
+            <input
+              type="email"
+              required
+              placeholder="john@example.com"
+              value={form.email}
+              onChange={(e) =>
+                setForm({ ...form, email: e.target.value })
+              }
+              className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
+            />
+          </div>
 
-          <input
-            className="w-full p-4 bg-zinc-900 rounded-xl"
-            placeholder="Current Stage"
-            value={form.stage}
-            onChange={(e) =>
-              setForm({ ...form, stage: e.target.value })
-            }
-          />
+          {/* Company */}
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-300">
+              Company (Optional)
+            </label>
 
-          <input
-            className="w-full p-4 bg-zinc-900 rounded-xl"
-            placeholder="Budget"
-            value={form.budget}
-            onChange={(e) =>
-              setForm({ ...form, budget: e.target.value })
-            }
-          />
+            <input
+              type="text"
+              placeholder="ABC Technologies"
+              value={form.company}
+              onChange={(e) =>
+                setForm({ ...form, company: e.target.value })
+              }
+              className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
+            />
+          </div>
+
+          {/* Idea Title */}
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-300">
+              Startup / Idea Title
+            </label>
+
+            <input
+              type="text"
+              required
+              placeholder="AI Healthcare Platform"
+              value={form.idea_title}
+              onChange={(e) =>
+                setForm({
+                  ...form,
+                  idea_title: e.target.value,
+                })
+              }
+              className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
+            />
+          </div>
+
+          {/* Description */}
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-300">
+              Describe Your Idea
+            </label>
+
+            <textarea
+              rows={6}
+              required
+              placeholder="Describe your startup idea, the problem it solves, target audience, and your vision..."
+              value={form.idea_description}
+              onChange={(e) =>
+                setForm({
+                  ...form,
+                  idea_description: e.target.value,
+                })
+              }
+              className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
+            />
+          </div>
+
+          {/* Stage */}
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-300">
+              Current Stage
+            </label>
+
+            <input
+              type="text"
+              placeholder="Idea / MVP / Prototype / Launched"
+              value={form.stage}
+              onChange={(e) =>
+                setForm({ ...form, stage: e.target.value })
+              }
+              className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
+            />
+          </div>
+
+          {/* Budget */}
+          <div>
+            <label className="mb-2 block text-sm font-medium text-gray-300">
+              Estimated Budget
+            </label>
+
+            <input
+              type="text"
+              placeholder="$5,000 - $10,000 (Optional)"
+              value={form.budget}
+              onChange={(e) =>
+                setForm({ ...form, budget: e.target.value })
+              }
+              className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
+            />
+          </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="bg-white text-black px-8 py-4 rounded-xl font-semibold"
+            className="rounded-xl bg-white px-8 py-4 font-semibold text-black transition hover:scale-105 disabled:opacity-60"
           >
             {loading ? "Submitting..." : "Submit Idea"}
           </button>
 
           {success && (
-            <p className="text-green-500">
+            <p className="font-medium text-green-500">
               {success}
             </p>
           )}
+
         </form>
+
       </div>
     </main>
   );
