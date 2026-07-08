@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <Navbar />
+  
 
       <main className="bg-black text-white">
 
