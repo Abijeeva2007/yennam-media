@@ -9,117 +9,159 @@ export default function Home() {
       <main className="bg-black text-white">
 
         {/* HERO SECTION */}
-        <section className="relative min-h-screen pt-20 flex flex-col justify-center items-center text-center overflow-hidden px-6">
+<section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-6 pt-24 pb-20">
 
-          <div className="absolute w-[900px] h-[900px] bg-white/5 rounded-full blur-[220px]" />
+  <div className="absolute h-[450px] w-[450px] rounded-full bg-white/10 blur-[150px] md:h-[700px] md:w-[700px]" />
 
-          <div className="relative z-10">
-            <p className="uppercase tracking-[10px] text-gray-500 mb-6">
-              Helping Founders Build The Next Big Thing
-            </p>
+  <div className="relative z-10 mx-auto max-w-5xl text-center">
 
-            <h1 className="text-6xl md:text-8xl font-bold mb-6">
-              Yennam Media
-            </h1>
+    <p className="mb-6 text-xs font-medium uppercase tracking-[0.45em] text-gray-500 md:text-sm">
+      Creative Agency • Venture Studio
+    </p>
 
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-10">
-              Helping founders validate ideas, build products, create strong brands, and launch scalable businesses.
+    <h1 className="mb-8 text-5xl font-bold leading-tight sm:text-6xl lg:text-8xl">
+      Building Ideas
+      <br />
+      Into Brands.
+    </h1>
 
-            </p>
+    <p className="mx-auto mb-10 max-w-3xl text-base leading-8 text-gray-400 md:text-xl">
+      We partner with startups, founders and businesses to design,
+      build and grow brands, digital products and scalable ventures.
+    </p>
 
-            <div className="flex gap-6 justify-center flex-wrap">
+    <div className="flex flex-col justify-center gap-4 sm:flex-row">
 
-  <Link
-  href="/contact"
-  className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:scale-105 transition"
->
-  Start a Project
-</Link>
+      <Link
+        href="/contact"
+        className="rounded-full bg-white px-8 py-4 font-semibold text-black transition hover:scale-105"
+      >
+        Start a Project
+      </Link>
 
-<Link
-  href="/idea"
-  className="border border-white px-8 py-4 rounded-full hover:bg-white hover:text-black transition"
->
-  Submit Your Idea
-</Link>
+      <Link
+        href="/idea"
+        className="rounded-full border border-white px-8 py-4 transition hover:bg-white hover:text-black"
+      >
+        Submit Your Idea
+      </Link>
 
-</div>
-          </div>
-        </section>
-
-        {/* SERVICES OVERVIEW */}
-<section className="max-w-6xl mx-auto px-6 pb-24">
-  <div className="grid md:grid-cols-3 gap-8">
-
-    <div className="border border-white/10 rounded-3xl p-8 bg-white/5">
-      <h3 className="text-2xl font-bold mb-4">
-        Venture Building
-      </h3>
-
-      <p className="text-gray-400">
-        Supporting founders from idea validation to product launch.
-      </p>
-    </div>
-
-    <div className="border border-white/10 rounded-3xl p-8 bg-white/5">
-      <h3 className="text-2xl font-bold mb-4">
-        Brand Strategy
-      </h3>
-
-      <p className="text-gray-400">
-        Creating memorable brands that connect with audiences.
-      </p>
-    </div>
-
-    <div className="border border-white/10 rounded-3xl p-8 bg-white/5">
-      <h3 className="text-2xl font-bold mb-4">
-        Product Development
-      </h3>
-
-      <p className="text-gray-400">
-        Turning ideas into scalable digital products and businesses.
-      </p>
     </div>
 
   </div>
+
 </section>
 
-        {/* MARKETING SECTION */}
-        <section className="py-32 px-6 max-w-7xl mx-auto">
+{/* SERVICES OVERVIEW */}
 
-          <h2 className="text-6xl font-bold text-center mb-16">
-            Marketing System
-          </h2>
+<section className="mx-auto max-w-7xl px-6 py-20">
 
-          <div className="grid md:grid-cols-3 gap-8">
+  <div className="mb-14 text-center">
 
-            {[
-              "Brand Identity Design",
-              "Social Media Strategy",
-              "Content Creation",
-              "Campaign Management",
-              "Growth Marketing",
-              "Performance Analytics",
-            ].map((item) => (
-              <div
-                key={item}
-                className="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white hover:text-black transition duration-300"
-              >
-                <h3 className="text-2xl font-semibold">{item}</h3>
-              </div>
-            ))}
+    <p className="mb-3 uppercase tracking-[0.35em] text-gray-500">
+      What We Build
+    </p>
 
-          </div>
-        </section>
+    <h2 className="text-4xl font-bold md:text-6xl">
+      From Idea To Launch
+    </h2>
+
+  </div>
+
+  <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:-translate-y-2 hover:bg-white hover:text-black">
+
+      <h3 className="mb-4 text-2xl font-bold">
+        Venture Building
+      </h3>
+
+      <p className="leading-7 text-gray-400">
+        Validate ideas, create MVPs and launch ventures with confidence.
+      </p>
+
+    </div>
+
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:-translate-y-2 hover:bg-white hover:text-black">
+
+      <h3 className="mb-4 text-2xl font-bold">
+        Brand Strategy
+      </h3>
+
+      <p className="leading-7 text-gray-400">
+        Build a memorable identity with positioning, storytelling and design.
+      </p>
+
+    </div>
+
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-8 transition hover:-translate-y-2 hover:bg-white hover:text-black">
+
+      <h3 className="mb-4 text-2xl font-bold">
+        Product Development
+      </h3>
+
+      <p className="leading-7 text-gray-400">
+        Design and develop scalable digital products ready for the market.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+{/* MARKETING */}
+
+<section className="mx-auto max-w-7xl px-6 py-24">
+
+  <div className="mb-14 text-center">
+
+    <p className="mb-3 uppercase tracking-[0.35em] text-gray-500">
+      Marketing
+    </p>
+
+    <h2 className="text-4xl font-bold md:text-6xl">
+      Growth Driven Marketing
+    </h2>
+
+  </div>
+
+  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+    {[
+      "Brand Identity",
+      "Social Media Strategy",
+      "Content Creation",
+      "Performance Marketing",
+      "Campaign Management",
+      "Analytics & Growth",
+    ].map((item) => (
+
+      <div
+        key={item}
+        className="rounded-3xl border border-white/10 bg-white/5 p-8 transition duration-300 hover:bg-white hover:text-black hover:-translate-y-2"
+      >
+
+        <h3 className="text-2xl font-semibold">
+          {item}
+        </h3>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
 
         {/* VENTURE SECTION */}
-        <section className="py-32 px-6 max-w-7xl mx-auto">
+        <section className="py-20 md:py-32 px-6 max-w-7xl mx-auto">
 
-          <h2 className="text-6xl font-bold text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-bold text-center mb-12">
             Venture Studio
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
             {[
               "Problem Research",
@@ -131,7 +173,7 @@ export default function Home() {
             ].map((item) => (
               <div
                 key={item}
-                className="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white hover:text-black transition duration-300"
+                className="bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white hover:text-black transition duration-300"
               >
                 <h3 className="text-2xl font-semibold">{item}</h3>
               </div>
@@ -143,11 +185,11 @@ export default function Home() {
         {/* PROCESS SECTION */}
         <section className="py-32 px-6">
 
-          <h2 className="text-6xl font-bold text-center mb-24">
+          <h2 className="text-4xl md:text-6xl font-bold text-center mb-24">
             Our Process
           </h2>
 
-          <div className="flex flex-wrap justify-center gap-8 text-3xl text-gray-300">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-xl md:text-3xl text-gray-300">
 
             <span>Understand</span>
             <span>→</span>
@@ -173,10 +215,10 @@ export default function Home() {
             Why Yennam?
           </h2>
 
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
             <div className="border border-white/10 p-8 rounded-3xl bg-white/5">
-              <h3 className="text-5xl font-bold mb-4">01</h3>
+              <h3 className="text-4xl md:text-6xl font-bold mb-4">01</h3>
               <p>Creative Excellence</p>
             </div>
 

@@ -4,85 +4,70 @@ import Link from "next/link";
 import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 
+const links = [
+  { href: "/marketing", label: "Marketing" },
+  { href: "/venture", label: "Venture" },
+  { href: "/idea", label: "Submit Idea" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="w-full border-b border-zinc-800 bg-black sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-5">
+    <nav className="sticky top-0 z-50 w-full border-b border-zinc-800 bg-black/95 backdrop-blur shadow-lg">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
 
         {/* Logo */}
         <Link
           href="/"
-          className="text-white text-2xl md:text-3xl font-bold"
+          className="text-2xl font-bold text-white transition hover:text-gray-300 md:text-3xl"
         >
           Yennam Media
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 text-white text-lg">
-          <Link href="/marketing">Marketing</Link>
-          <Link href="/venture">Venture</Link>
-          <Link href="/idea">Submit Idea</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
+        {/* Desktop Navigation */}
+        <div className="hidden items-center gap-8 text-base text-white md:flex">
+          {links.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="transition duration-200 hover:text-gray-400"
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Button */}
         <button
           onClick={() => setOpen(!open)}
-          className="text-white text-3xl md:hidden"
+          className="rounded-md p-2 text-3xl text-white transition hover:bg-zinc-800 md:hidden"
         >
           {open ? <HiX /> : <HiMenu />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      {open && (
-        <div className="md:hidden bg-black border-t border-zinc-800 flex flex-col">
-
-          <Link
-            href="/marketing"
-            className="px-6 py-4 border-b border-zinc-800"
-            onClick={() => setOpen(false)}
-          >
-            Marketing
-          </Link>
-
-          <Link
-            href="/venture"
-            className="px-6 py-4 border-b border-zinc-800"
-            onClick={() => setOpen(false)}
-          >
-            Venture
-          </Link>
-
-          <Link
-            href="/idea"
-            className="px-6 py-4 border-b border-zinc-800"
-            onClick={() => setOpen(false)}
-          >
-            Submit Idea
-          </Link>
-
-          <Link
-            href="/about"
-            className="px-6 py-4 border-b border-zinc-800"
-            onClick={() => setOpen(false)}
-          >
-            About
-          </Link>
-
-          <Link
-            href="/contact"
-            className="px-6 py-4"
-            onClick={() => setOpen(false)}
-          >
-            Contact
-          </Link>
-
+      <div
+        className={`overflow-hidden transition-all duration-300 md:hidden ${
+          open ? "max-h-96 border-t border-zinc-800" : "max-h-0"
+        }`}
+      >
+        <div className="flex flex-col bg-black">
+          {links.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="px-6 py-4 text-white transition hover:bg-zinc-900"
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
-      )}
+      </div>
     </nav>
   );
 }
