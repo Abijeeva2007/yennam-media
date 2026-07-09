@@ -1,5 +1,5 @@
 "use client";
-
+import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 
@@ -23,6 +23,17 @@ export default function ContactPage() {
       alert(error.message);
       return;
     }
+    await emailjs.send(
+  "service_yubmqb8",
+  "template_wdlhxj3",
+  {
+    name: form.name,
+    email: form.email,
+    message: form.message,
+    time: new Date().toLocaleString(),
+  },
+  "Y-RKrLttFI07Nexdv"
+);
 
     setSuccess("✅ Message sent successfully!");
 
