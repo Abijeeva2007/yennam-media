@@ -13,37 +13,38 @@ export default function ContactPage() {
   const [success, setSuccess] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
+  try {
     const { error } = await supabase
       .from("contact_submissions")
       .insert([form]);
 
-    if (error) {
-      alert(error.message);
-      return;
-    }
+    if (error) throw error;
+
     await emailjs.send(
-  "service_yubmqb8",
-  "template_wdlhxj3",
-  {
-    name: form.name,
-    email: form.email,
-    message: form.message,
-    time: new Date().toLocaleString(),
-  },
-  "Y-RKrLttFI07Nexdv"
-);
+      "service_yubmqb8",
+      "template_wdlhxj3",
+      {
+        name: form.name,
+        email: form.email,
+        message: form.message,
+        time: new Date().toLocaleString(),
+      },
+      "Y-RKrLttFI07Nexdv"
+    );
 
     setSuccess("✅ Message sent successfully!");
-
     setForm({
       name: "",
       email: "",
       message: "",
     });
-  };
-
+  } catch (err) {
+    console.error(err);
+    alert(JSON.stringify(err));
+  }
+};
   return (
     <main className="min-h-screen bg-black text-white px-6 py-20 pt-24">
       <div className="mx-auto max-w-3xl">
