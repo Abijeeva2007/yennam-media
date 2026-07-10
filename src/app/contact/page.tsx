@@ -9,12 +9,13 @@ export default function ContactPage() {
     email: "",
     message: "",
   });
-
+  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
-
+  if (loading) return;
+  setLoading(true);
   try {
     const { error } = await supabase
       .from("contact_submissions")
@@ -40,6 +41,9 @@ export default function ContactPage() {
       email: "",
       message: "",
     });
+    } finally {
+      setLoading(false);
+}
   } catch (err) {
     console.error(err);
     alert(JSON.stringify(err));
@@ -115,11 +119,12 @@ export default function ContactPage() {
 
           {/* Submit */}
           <button
-            type="submit"
-            className="rounded-xl bg-white px-8 py-4 font-semibold text-black transition hover:scale-105"
+             type="submit"
+             disabled={loading}
+             className="rounded-xl bg-white px-8 py-4 font-semibold text-black transition hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Send Message
-          </button>
+             {loading ? "Sending..." : "Send Message"}
+            </button>
 
           {success && (
             <p className="text-green-500 font-medium">
