@@ -2,7 +2,7 @@
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
-
+import { useRouter } from "next/navigation";
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
@@ -10,12 +10,15 @@ export default function ContactPage() {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
-
+  
+  const router = useRouter();
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
+
   if (loading) return;
+
   setLoading(true);
+
   try {
     const { error } = await supabase
       .from("contact_submissions")
@@ -35,18 +38,20 @@ export default function ContactPage() {
       "Y-RKrLttFI07Nexdv"
     );
 
-    setSuccess("✅ Message sent successfully!");
     setForm({
       name: "",
       email: "",
       message: "",
     });
-    } finally {
-      setLoading(false);
-}
+
+    // Redirect to success page
+    router.push("/contact/success");
+
   } catch (err) {
     console.error(err);
-    alert(JSON.stringify(err));
+    alert("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
   }
 };
   return (
@@ -126,11 +131,7 @@ export default function ContactPage() {
              {loading ? "Sending..." : "Send Message"}
             </button>
 
-          {success && (
-            <p className="text-green-500 font-medium">
-              {success}
-            </p>
-          )}
+          
 
         </form>
 
