@@ -1,6 +1,4 @@
 "use client";
-import emailjs from "@emailjs/browser";
-"use client";
 
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
@@ -19,13 +17,10 @@ export default function ContactPage() {
     message: "",
   });
 
-  const [loading, setLoading] = useState(false);
-  
-  const router = useRouter();
+
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
-  const searchParams = useSearchParams();
-  const service = searchParams.get("service");
+  
   if (loading) return;
 
   setLoading(true);
