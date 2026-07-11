@@ -1,42 +1,59 @@
 "use client";
 import emailjs from "@emailjs/browser";
+"use client";
+
+import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+
 export default function ContactPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const service = searchParams.get("service");
+
   const [form, setForm] = useState({
     name: "",
     email: "",
     message: "",
   });
+
   const [loading, setLoading] = useState(false);
   
   const router = useRouter();
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
-
+  const searchParams = useSearchParams();
+  const service = searchParams.get("service");
   if (loading) return;
 
   setLoading(true);
 
   try {
     const { error } = await supabase
-      .from("contact_submissions")
-      .insert([form]);
+  .from("contact_submissions")
+  .insert([
+    {
+      ...form,
+      service: service ?? "General Contact",
+    },
+  ]);
 
     if (error) throw error;
 
     await emailjs.send(
-      "service_yubmqb8",
-      "template_wdlhxj3",
-      {
-        name: form.name,
-        email: form.email,
-        message: form.message,
-        time: new Date().toLocaleString(),
-      },
-      "Y-RKrLttFI07Nexdv"
-    );
+  "service_yubmqb8",
+  "template_wdlhxj3",
+  {
+    name: form.name,
+    email: form.email,
+    service: service ?? "General Contact",
+    message: form.message,
+    time: new Date().toLocaleString(),
+  },
+  "Y-RKrLttFI07Nexdv"
+);
 
     setForm({
       name: "",
@@ -59,7 +76,9 @@ export default function ContactPage() {
       <div className="mx-auto max-w-3xl">
 
         <h1 className="mb-4 text-5xl md:text-6xl font-bold">
-          Contact Us
+          {service === "marketing"
+           ? "Start Your Marketing Project"
+           : "Contact Us"}
         </h1>
 
         <p className="mb-12 text-gray-400 text-lg">
@@ -113,7 +132,11 @@ export default function ContactPage() {
             <textarea
               rows={6}
               required
-              placeholder="Tell us about your project, goals, timeline and budget..."
+              placeholder={
+              service === "marketing"
+                 ? "Tell us about your business, marketing goals, target audience, timeline and budget..."
+                 : "Tell us about your project, goals, timeline and budget..."
+              }
               value={form.message}
               onChange={(e) =>
                 setForm({ ...form, message: e.target.value })
@@ -121,6 +144,7 @@ export default function ContactPage() {
               className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
             />
           </div>
+          
 
           {/* Submit */}
           <button
@@ -131,7 +155,26 @@ export default function ContactPage() {
              {loading ? "Sending..." : "Send Message"}
             </button>
 
-          
+          {service && (
+  <div className="mb-8 rounded-xl border border-yellow-500 bg-yellow-500/10 p-5">
+    <p className="text-yellow-400 text-sm uppercase tracking-widest">
+      Selected Service
+    </p>
+
+    <h2 className="mt-2 text-2xl font-bold">
+      {service === "marketing"
+        ? "Marketing Project"
+        : service}
+    </h2>
+
+    <p className="mt-2 text-gray-400">
+      Fill out the form below and our team will contact you regarding your{" "}
+      {service === "marketing"
+        ? "marketing project."
+        : service + "."}
+    </p>
+  </div>
+)}
 
         </form>
 

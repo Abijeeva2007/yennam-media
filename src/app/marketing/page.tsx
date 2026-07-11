@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function MarketingPage() {
   return (
     <main className="min-h-screen pt-20 bg-black text-white px-8 py-32">
@@ -53,9 +55,12 @@ export default function MarketingPage() {
           Scalable Growth.
         </h2>
 
-        <button className="bg-white text-black px-8 py-4 rounded-full">
-          Start Marketing Project
-        </button>
+        <Link
+            href="/contact?service=marketing"
+            className="rounded-xl bg-white px-8 py-4 font-semibold text-black hover:scale-105 transition"
+        >
+            Start Marketing Project
+        </Link>
 
       </div>
 
