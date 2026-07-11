@@ -3,13 +3,14 @@
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function ContactPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const service = searchParams.get("service");
+  const service =
+  typeof window !== "undefined"
+    ? new URLSearchParams(window.location.search).get("service")
+    : null;
 
   const [form, setForm] = useState({
     name: "",
