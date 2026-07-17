@@ -48,10 +48,25 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-black text-white">
-        <Navbar />
-        {children}
-      </body>
-    </html>
+  <body className="bg-black text-white">
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Yennam Media",
+          url: "https://yennam-media.vercel.app",
+          logo: "https://yennam-media.vercel.app/favicon.ico",
+          description:
+            "Yennam Media is a digital marketing and branding company helping businesses grow through creative marketing, web development, and innovative ventures.",
+        }),
+      }}
+    />
+
+    <Navbar />
+    {children}
+  </body>
+</html>
   );
 }
