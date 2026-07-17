@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Learn more about Yennam Media and our mission.",
+};
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-black text-white pt-24 px-6 md:px-10 py-16 md:py-24">
