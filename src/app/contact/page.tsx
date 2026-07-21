@@ -33,7 +33,10 @@ export default function ContactPage() {
   .from("contact_submissions")
   .insert([
     {
-      ...form,
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      message: form.message,
       service: service ?? "General Contact",
     },
   ]);
@@ -45,6 +48,7 @@ export default function ContactPage() {
   "template_wdlhxj3",
   {
     name: form.name,
+    phone: form.phone,
     email: form.email,
     service: service ?? "General Contact",
     message: form.message,
