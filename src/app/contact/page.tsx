@@ -13,10 +13,11 @@ export default function ContactPage() {
     : null;
 
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  name: "",
+  phone: "",
+  email: "",
+  message: "",
+});
 
   const [loading, setLoading] = useState(false);
 
@@ -53,10 +54,11 @@ export default function ContactPage() {
 );
 
     setForm({
-      name: "",
-      email: "",
-      message: "",
-    });
+  name: "",
+  phone: "",
+  email: "",
+  message: "",
+});
 
     // Redirect to success page
     router.push("/contact/success");
@@ -101,6 +103,23 @@ export default function ContactPage() {
               className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
             />
           </div>
+
+          <div>
+  <label className="mb-2 block text-sm font-medium text-gray-300">
+    Phone Number
+  </label>
+
+  <input
+    type="tel"
+    required
+    placeholder="+91 9876543210"
+    value={form.phone}
+    onChange={(e) =>
+      setForm({ ...form, phone: e.target.value })
+    }
+    className="w-full rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-white placeholder:text-gray-500 focus:border-yellow-500 focus:outline-none"
+  />
+</div>
 
           {/* Email */}
           <div>
