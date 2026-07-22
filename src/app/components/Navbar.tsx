@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
@@ -20,12 +20,16 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
 
         {/* Logo */}
-        <Link
-          href="/"
-          className="text-2xl font-bold text-white transition hover:text-gray-300 md:text-3xl"
-        >
-          Yennam Media
-        </Link>
+<Link href="/" className="flex items-center">
+  <Image
+    src="/logo.png"
+    alt="Yennam Media"
+    width={180}
+    height={60}
+    priority
+    className="h-12 w-auto md:h-14"
+  />
+</Link>
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-8 text-base text-white md:flex">
